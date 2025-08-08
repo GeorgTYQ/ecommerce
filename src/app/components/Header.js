@@ -15,7 +15,9 @@ const Header = () => {
             <Image
               src="/favicon.svg"
               alt="Lavosh Bakery Logo"
-              className="h-8 w-auto"
+              width={32} // set width in pixels
+              height={32} // set height in pixels
+              className="w-auto"
             />
           </Link>
         </div>
@@ -283,7 +285,9 @@ const Header = () => {
                   <Image
                     src="/favicon.svg"
                     alt="Lavosh Bakery Logo"
-                    className="h-8 w-auto"
+                    width={32} // set width in pixels
+                    height={32} // set height in pixels
+                    className="w-auto"
                   />
                 </Link>
                 <button

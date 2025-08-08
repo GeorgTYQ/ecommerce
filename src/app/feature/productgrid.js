@@ -37,10 +37,13 @@ export default function ProductCarousel({ activeCategory }) {
             {/* <Image src={product.imageUrl} alt={product.name} /> */}
             <div className="group relative">
               <Image
-                src="https://tailwindcss.com/plus-assets/Image/ecommerce-images/product-page-01-related-product-01.jpg"
-                alt="Front of men&#039;s Basic Tee in black."
-                className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"
+                src="/image.png"
+                alt="Front of men's Basic Tee in black."
+                width={320} // Example width in pixels
+                height={320} // Example height in pixels, to keep aspect ratio square
+                className="rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:h-80 lg:aspect-auto w-full"
               />
+
               <div className="mt-4 flex justify-between">
                 <div>
                   <h3 className="text-sm text-gray-700">
