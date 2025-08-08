@@ -1,5 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
+import Image from "next/image";
 const Header = () => {
   return (
     <header className="bg-white">
@@ -8,14 +10,14 @@ const Header = () => {
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
       >
         <div className="flex lg:flex-1">
-          <a href="/" className="-m-1.5 p-1.5">
+          <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Lavosh Bakery</span>
-            <img
+            <Image
               src="/favicon.svg"
               alt="Lavosh Bakery Logo"
               className="h-8 w-auto"
             />
-          </a>
+          </Link>
         </div>
         {/* small screen icon */}
         <div className="flex lg:hidden">
@@ -84,12 +86,15 @@ const Header = () => {
                     </svg>
                   </div>
                   <div className="flex-auto">
-                    <a href="#" className="block font-semibold text-gray-900">
+                    <Link
+                      href="#"
+                      className="block font-semibold text-gray-900"
+                    >
                       Analytics
                       <span className="absolute inset-0"></span>
-                    </a>
+                    </Link>
                     <p className="mt-1 text-gray-600">
-                      Get a better understanding of your traffic
+                      Get Link better understanding of your traffic
                     </p>
                   </div>
                 </div>
@@ -112,10 +117,13 @@ const Header = () => {
                     </svg>
                   </div>
                   <div className="flex-auto">
-                    <a href="#" className="block font-semibold text-gray-900">
+                    <Link
+                      href="#"
+                      className="block font-semibold text-gray-900"
+                    >
                       Engagement
                       <span className="absolute inset-0"></span>
-                    </a>
+                    </Link>
                     <p className="mt-1 text-gray-600">
                       Speak directly to your customers
                     </p>
@@ -140,10 +148,13 @@ const Header = () => {
                     </svg>
                   </div>
                   <div className="flex-auto">
-                    <a href="#" className="block font-semibold text-gray-900">
+                    <Link
+                      href="#"
+                      className="block font-semibold text-gray-900"
+                    >
                       Security
                       <span className="absolute inset-0"></span>
-                    </a>
+                    </Link>
                     <p className="mt-1 text-gray-600">
                       Your customers’ data will be safe and secure
                     </p>
@@ -168,10 +179,13 @@ const Header = () => {
                     </svg>
                   </div>
                   <div className="flex-auto">
-                    <a href="#" className="block font-semibold text-gray-900">
+                    <Link
+                      href="#"
+                      className="block font-semibold text-gray-900"
+                    >
                       Integrations
                       <span className="absolute inset-0"></span>
-                    </a>
+                    </Link>
                     <p className="mt-1 text-gray-600">
                       Connect with third-party tools
                     </p>
@@ -196,10 +210,13 @@ const Header = () => {
                     </svg>
                   </div>
                   <div className="flex-auto">
-                    <a href="#" className="block font-semibold text-gray-900">
+                    <Link
+                      href="#"
+                      className="block font-semibold text-gray-900"
+                    >
                       Automations
                       <span className="absolute inset-0"></span>
-                    </a>
+                    </Link>
                     <p className="mt-1 text-gray-600">
                       Build strategic funnels that will convert
                     </p>
@@ -207,7 +224,7 @@ const Header = () => {
                 </div>
               </div>
               <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-                <a
+                <Link
                   href="#"
                   className="flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-gray-900 hover:bg-gray-100"
                 >
@@ -225,8 +242,8 @@ const Header = () => {
                     />
                   </svg>
                   Watch demo
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
                   className="flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-gray-900 hover:bg-gray-100"
                 >
@@ -244,15 +261,15 @@ const Header = () => {
                     />
                   </svg>
                   Contact sales
-                </a>
+                </Link>
               </div>
             </el-popover>
           </div>
         </el-popover-group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm/6 font-semibold text-gray-900">
+          <Link href="#" className="text-sm/6 font-semibold text-gray-900">
             Log in <span aria-hidden="true">&rarr;</span>
-          </a>
+          </Link>
         </div>
       </nav>
       {/* small screen */}
@@ -261,14 +278,14 @@ const Header = () => {
           <div tabIndex="0" className="fixed inset-0 focus:outline-none">
             <el-dialog-panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
               <div className="flex items-center justify-between">
-                <a href="#" className="-m-1.5 p-1.5">
+                <Link href="#" className="-m-1.5 p-1.5">
                   <span className="sr-only">Lavosh Bakery</span>
-                  <img
+                  <Image
                     src="/favicon.svg"
                     alt="Lavosh Bakery Logo"
                     className="h-8 w-auto"
                   />
-                </a>
+                </Link>
                 <button
                   type="button"
                   command="close"
@@ -323,58 +340,58 @@ const Header = () => {
                         hidden
                         className="mt-2 block space-y-2"
                       >
-                        <a
+                        <Link
                           href="#"
                           className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
                         >
                           Analytics
-                        </a>
-                        <a
+                        </Link>
+                        <Link
                           href="#"
                           className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
                         >
                           Engagement
-                        </a>
-                        <a
+                        </Link>
+                        <Link
                           href="#"
                           className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
                         >
                           Security
-                        </a>
-                        <a
+                        </Link>
+                        <Link
                           href="#"
                           className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
                         >
                           Integrations
-                        </a>
-                        <a
+                        </Link>
+                        <Link
                           href="#"
                           className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
                         >
                           Automations
-                        </a>
-                        <a
+                        </Link>
+                        <Link
                           href="#"
                           className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
                         >
                           Watch demo
-                        </a>
-                        <a
+                        </Link>
+                        <Link
                           href="#"
                           className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
                         >
                           Contact sales
-                        </a>
+                        </Link>
                       </el-disclosure>
                     </div>
                   </div>
                   <div className="py-6">
-                    <a
+                    <Link
                       href="#"
                       className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                     >
                       Log in
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -383,7 +400,6 @@ const Header = () => {
         </dialog>
       </el-dialog>
     </header>
-
   );
 };
 

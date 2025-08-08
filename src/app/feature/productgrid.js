@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-
+import Image from "next/image";
 export default function ProductCarousel({ activeCategory }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -34,10 +34,10 @@ export default function ProductCarousel({ activeCategory }) {
       <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
         {products.map((product) => (
           <div key={product.id} className="product-item">
-            {/* <img src={product.imageUrl} alt={product.name} /> */}
+            {/* <Image src={product.imageUrl} alt={product.name} /> */}
             <div className="group relative">
-              <img
-                src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-01-related-product-01.jpg"
+              <Image
+                src="https://tailwindcss.com/plus-assets/Image/ecommerce-images/product-page-01-related-product-01.jpg"
                 alt="Front of men&#039;s Basic Tee in black."
                 className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"
               />
