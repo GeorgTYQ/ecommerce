@@ -14,6 +14,7 @@ export default function CategoryGrid({ categories }) {
       setActiveCategory(categories[0].id);
     }
   }, [activeCategory, categories, setActiveCategory]);
+  useEffect(() => {}, [activeCategory]);
 
   return (
     <div className="flex flex-wrap gap-2 justify-center">
@@ -24,13 +25,13 @@ export default function CategoryGrid({ categories }) {
             key={index}
             type="button" // 防止默认提交行为
             onClick={() => setActiveCategory(category.id)}
-            className={`inline-flex cursor-pointer items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium border ${
+            className={`inline-flex cursor-pointer items-center gap-x-1.5 py-1.5 px-3 rounded-full font-medium border-3 ${
               isActive
-                ? "bg-gray-800 text-white border-gray-800 dark:bg-white dark:text-gray-900"
-                : "border-gray-800 text-gray-800 dark:border-neutral-200 dark:text-white"
+                ? "bg-amber-800/70 text-amber-100 border-amber-800 dark:bg-amber dark:text-amber-800 "
+                : "border-amber-800/70 text-amber-700 dark:border-amber-200 dark:text-amber hover:bg-amber-800/50"
             }`}
           >
-            {category.name}
+            <h3>{category.name}</h3>
           </button>
         );
       })}

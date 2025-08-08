@@ -24,3 +24,36 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+.underline-after {
+  position: relative;
+  display: inline-block; /* 关键：inline-block 保持宽度和内容匹配 */
+}
+
+.underline-after::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 60%;
+  height: 2px;
+  background-color: #f59e0b; /* amber-500 */
+  border-radius: 2px;
+  transform: translateX(-50%);
+}
+
+.title-after {
+  position: relative;
+  display: inline-block; /* 关键：inline-block 保持宽度和内容匹配 */
+}
+
+.title-after::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 60%;
+  height: 2px;
+  background-color: #000000; /* amber-500 */
+  border-radius: 2px;
+  transform: translateX(-50%);
+}

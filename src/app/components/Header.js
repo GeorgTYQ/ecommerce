@@ -1,50 +1,38 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { UilTimes, UilBars, UilSignInAlt } from "@iconscout/react-unicons";
 import Link from "next/link";
 import Image from "next/image";
+
 const Header = () => {
   return (
-    <header className="bg-white">
+    <header className="bg-stone-800 sticky top-0 z-50">
       <nav
         aria-label="Global"
-        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+        className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8"
       >
-        <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Lavosh Bakery</span>
+        <div className="flex lg:flex-1 text-amber-500 text-lg font-bold">
+          <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2">
             <Image
               src="/favicon.svg"
               alt="Lavosh Bakery Logo"
-              width={32} // set width in pixels
-              height={32} // set height in pixels
-              className="w-auto"
+              width={12}
+              height={24}
+              className="w-12 h-6" // Tailwind sizes in rem (w-12 = 3rem, ~48px)
             />
+            <span>Lavosh Bakery</span>
           </Link>
         </div>
+
         {/* small screen icon */}
         <div className="flex lg:hidden">
           <button
             type="button"
             command="show-modal"
             commandfor="mobile-menu"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-amber-500 hover:text-amber-700"
           >
             <span className="sr-only">Open main menu</span>
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              data-slot="icon"
-              aria-hidden="true"
-              className="size-6"
-            >
-              <path
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <UilBars />
           </button>
         </div>
         {/* large screen */}
@@ -52,12 +40,12 @@ const Header = () => {
           <div className="relative">
             <button
               popoverTarget="desktop-menu-product"
-              className="flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900"
+              className="flex items-center gap-x-1 text-lg font-bold text-amber-500 "
             >
-              Product
+              Products
             </button>
 
-            <el-popover
+            {/* <el-popover
               id="desktop-menu-product"
               anchor="bottom"
               popover
@@ -265,12 +253,15 @@ const Header = () => {
                   Contact sales
                 </Link>
               </div>
-            </el-popover>
+            </el-popover> */}
           </div>
         </el-popover-group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link href="#" className="text-sm/6 font-semibold text-gray-900">
-            Log in <span aria-hidden="true">&rarr;</span>
+          <Link
+            href="#"
+            className="inline-flex items-center text-lg font-bold text-amber-500 gap-1"
+          >
+            <UilSignInAlt />
           </Link>
         </div>
       </nav>
@@ -278,7 +269,7 @@ const Header = () => {
       <el-dialog>
         <dialog id="mobile-menu" className="backdrop:bg-transparent lg:hidden">
           <div tabIndex="0" className="fixed inset-0 focus:outline-none">
-            <el-dialog-panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+            <el-dialog-panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-stone-900/80 p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
               <div className="flex items-center justify-between">
                 <Link href="#" className="-m-1.5 p-1.5">
                   <span className="sr-only">Lavosh Bakery</span>
@@ -294,24 +285,9 @@ const Header = () => {
                   type="button"
                   command="close"
                   commandfor="mobile-menu"
-                  className="-m-2.5 rounded-md p-2.5 text-gray-700"
+                  className="-m-2.5 rounded-md p-2.5 text-amber-500 hover:text-amber-700"
                 >
-                  <span className="sr-only">Close menu</span>
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    data-slot="icon"
-                    aria-hidden="true"
-                    className="size-6"
-                  >
-                    <path
-                      d="M6 18 18 6M6 6l12 12"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <UilTimes size={32} />
                 </button>
               </div>
               <div className="mt-6 flow-root">
@@ -322,7 +298,7 @@ const Header = () => {
                         type="button"
                         command="--toggle"
                         commandfor="products"
-                        className="flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                        className="flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-amber-500 hover:text-amber-700"
                       >
                         Product
                         <svg
@@ -339,7 +315,7 @@ const Header = () => {
                           />
                         </svg>
                       </button>
-                      <el-disclosure
+                      {/* <el-disclosure
                         id="products"
                         hidden
                         className="mt-2 block space-y-2"
@@ -386,13 +362,13 @@ const Header = () => {
                         >
                           Contact sales
                         </Link>
-                      </el-disclosure>
+                      </el-disclosure> */}
                     </div>
                   </div>
                   <div className="py-6">
                     <Link
                       href="#"
-                      className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                      className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-amber-500 hover:text-amber-700"
                     >
                       Log in
                     </Link>

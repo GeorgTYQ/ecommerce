@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 export default function ProductCarousel({ activeCategory }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -38,7 +39,7 @@ export default function ProductCarousel({ activeCategory }) {
             <div className="group relative">
               <Image
                 src="/image.png"
-                alt="Front of men's Basic Tee in black."
+                alt={product.name}
                 width={320} // Example width in pixels
                 height={320} // Example height in pixels, to keep aspect ratio square
                 className="rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:h-80 lg:aspect-auto w-full"
@@ -46,20 +47,18 @@ export default function ProductCarousel({ activeCategory }) {
 
               <div className="mt-4 flex justify-between">
                 <div>
-                  <h3 className="text-sm text-gray-700">
-                    <a href="#">
-                      <span
-                        aria-hidden="true"
-                        className="absolute inset-0"
-                      ></span>
-                      {product.name}
-                    </a>
+                  <h3 className="text-amber-500 font-extrabold underline-after mb-3">
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-0 "
+                    ></span>
+                    {product.name}
                   </h3>
-                  <p className="mt-1 text-sm text-gray-500">
+                  <p className="mt-1 text-base text-amber-400/70">
                     {product.description}
                   </p>
                 </div>
-                <p className="text-sm font-medium text-gray-900">
+                <p className="text-base font-semibold text-amber-400/90">
                   ${product.price}0
                 </p>
               </div>
