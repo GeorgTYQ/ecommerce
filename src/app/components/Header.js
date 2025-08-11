@@ -1,9 +1,20 @@
+"use client";
 import React from "react";
 import { UilTimes, UilBars, UilSignInAlt } from "@iconscout/react-unicons";
 import Link from "next/link";
 import Image from "next/image";
-
+import { useMenuStore } from "@/app/store/store";
 const Header = () => {
+  const { selectedMenu, setSelectedMenu } = useMenuStore();
+
+  const getLinkClass = (menu) =>
+    `relative pb-1 font-semibold text-amber-600 cursor-pointer
+    after:absolute after:left-0 after:bottom-0 after:h-[3px] after:rounded-full
+    after:bg-amber-600 after:transition-[width] after:duration-300
+    after:ease-in-out
+    after:w-0
+    hover:after:w-full ${selectedMenu === menu ? "after:w-full" : ""}`;
+
   return (
     <header className="bg-stone-800 sticky top-0 z-50">
       <nav
@@ -11,13 +22,17 @@ const Header = () => {
         className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8"
       >
         <div className="flex lg:flex-1 text-amber-500 text-lg font-bold">
-          <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2">
+          <Link
+            href="/"
+            onClick={() => setSelectedMenu("home")}
+            className="-m-1.5 p-1.5 flex items-center gap-2"
+          >
             <Image
               src="/favicon.svg"
               alt="Lavosh Bakery Logo"
               width={12}
               height={24}
-              className="w-12 h-6" // Tailwind sizes in rem (w-12 = 3rem, ~48px)
+              className="w-12 h-6"
             />
             <span>Lavosh Bakery</span>
           </Link>
@@ -35,27 +50,37 @@ const Header = () => {
             <UilBars />
           </button>
         </div>
-        {/* large screen */}
-        <el-popover-group className="hidden lg:flex lg:gap-x-12">
+
+        {/* large screen icon omitted for brevity */}
+        <div className="hidden lg:flex lg:gap-x-12">
           <div className="relative flex gap-5">
+            <Link href="/">
+              <button
+                onClick={() => setSelectedMenu("home")}
+                className={getLinkClass("home")}
+              >
+                Home
+              </button>
+            </Link>
             <Link href="/products">
               <button
-                popoverTarget="desktop-menu-product"
-                className="flex items-center gap-x-1 text-lg font-bold text-amber-500 "
+                onClick={() => setSelectedMenu("product")}
+                className={getLinkClass("product")}
               >
                 Products
               </button>
             </Link>
             <Link href="/about">
               <button
-                popoverTarget="desktop-menu-product"
-                className="flex items-center gap-x-1 text-lg font-bold text-amber-500 "
+                onClick={() => setSelectedMenu("about")}
+                className={getLinkClass("about")}
               >
                 About
               </button>
             </Link>
           </div>
-        </el-popover-group>
+        </div>
+
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link
             href="#"
@@ -94,79 +119,41 @@ const Header = () => {
                 <div className="-my-6 divide-y divide-gray-500/10">
                   <div className="space-y-2 py-6">
                     <div className="-mx-3">
-                      <Link href="">
+                      <Link href="/">
                         <button
-                          type="button"
-                          command="--toggle"
-                          commandfor="products"
-                          className="flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-amber-500 hover:text-amber-700"
+                          onClick={() => setSelectedMenu("home")}
+                          className={getLinkClass("home")}
                         >
-                          Product
-                          <svg
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            data-slot="icon"
-                            aria-hidden="true"
-                            className="size-5 flex-none in-aria-expanded:rotate-180"
-                          >
-                            <path
-                              d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-                              clipRule="evenodd"
-                              fillRule="evenodd"
-                            />
-                          </svg>
+                          Home
                         </button>
                       </Link>
-                      {/* <el-disclosure
-                        id="products"
-                        hidden
-                        className="mt-2 block space-y-2"
-                      >
-                        <Link
-                          href="#"
-                          className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
-                        >
-                          Analytics
-                        </Link>
-                        <Link
-                          href="#"
-                          className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
-                        >
-                          Engagement
-                        </Link>
-                        <Link
-                          href="#"
-                          className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
-                        >
-                          Security
-                        </Link>
-                        <Link
-                          href="#"
-                          className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
-                        >
-                          Integrations
-                        </Link>
-                        <Link
-                          href="#"
-                          className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
-                        >
-                          Automations
-                        </Link>
-                        <Link
-                          href="#"
-                          className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
-                        >
-                          Watch demo
-                        </Link>
-                        <Link
-                          href="#"
-                          className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
-                        >
-                          Contact sales
-                        </Link>
-                      </el-disclosure> */}
                     </div>
                   </div>
+                  <div className="space-y-2 py-6">
+                    <div className="-mx-3">
+                      <Link href="/products">
+                        <button
+                          onClick={() => setSelectedMenu("product")}
+                          className={getLinkClass("product")}
+                        >
+                          Product
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+                  <div className="space-y-2 py-6">
+                    <div className="-mx-3">
+                      <Link href="/about">
+                        <button
+                          onClick={() => setSelectedMenu("about")}
+                          className={getLinkClass("about")}
+                        >
+                          About
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+
                   <div className="py-6">
                     <Link
                       href="#"

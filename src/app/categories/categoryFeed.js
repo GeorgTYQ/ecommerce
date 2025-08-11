@@ -4,7 +4,7 @@ import CategoryWrapper from "./categoryWrapper";
 import CategoryGrid from "./categoryGrid";
 import CategoryItem from "./categoryItem";
 import { useCategory } from "@/app/hooks/useCategory";
-import { useActiveCategory } from "@/app/store/useActiveCategory";
+import { useActiveCategory } from "@/app/store/store";
 
 export const CategoryFeed = () => {
   const { categories, loading, error } = useCategory();

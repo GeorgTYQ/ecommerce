@@ -6,3 +6,7 @@ export const useActiveCategory = create((set) => ({
   setActiveCategoryId: (id) => set({ activeCategoryId: id }),
   resetActiveCategory: () => set({ activeCategoryId: null }),
 }));
+export const useMenuStore = create((set) => ({
+  selectedMenu: "home", // 默认
+  setSelectedMenu: (menu) => set({ selectedMenu: menu }),
+}));

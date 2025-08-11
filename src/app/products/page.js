@@ -3,7 +3,7 @@
 
 import React, { Suspense, useState } from "react";
 import dynamic from "next/dynamic";
-import { useActiveCategory } from "@/app/store/useActiveCategory";
+import { useActiveCategory } from "@/app/store/store";
 
 // 懒加载子组件，并开启 suspense
 const CategoryFeed = dynamic(() => import("@/app/categories/categoryFeed"), {

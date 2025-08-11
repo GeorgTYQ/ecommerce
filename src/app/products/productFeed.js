@@ -16,14 +16,14 @@ export default function ProductFeed({
 
   return (
     <ProductsWrapper>
-      {loading && <div className="text-white">Loading…</div>}
+      {loading && <div className="text-amber-500">Loading…</div>}
       {error && (
         <div className="text-red-400">
           Error: {String(error.message || error)}
         </div>
       )}
       {!loading && !items.length && (
-        <div className="text-white m-10">No Product</div>
+        <div className="text-amber-500 m-10">No Product</div>
       )}
 
       {!!items.length && (
