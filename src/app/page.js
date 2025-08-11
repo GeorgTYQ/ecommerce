@@ -6,10 +6,10 @@ import FooterSection from "@/app/components/FooterSection";
 const Home = () => {
   return (
     <div>
-      <Header />
+
       <Herosection />
       <ProductSection />
-      <FooterSection />
+
     </div>
   );
 };

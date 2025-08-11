@@ -38,12 +38,14 @@ const Header = () => {
         {/* large screen */}
         <el-popover-group className="hidden lg:flex lg:gap-x-12">
           <div className="relative">
-            <button
-              popoverTarget="desktop-menu-product"
-              className="flex items-center gap-x-1 text-lg font-bold text-amber-500 "
-            >
-              Products
-            </button>
+            <Link href="/products">
+              <button
+                popoverTarget="desktop-menu-product"
+                className="flex items-center gap-x-1 text-lg font-bold text-amber-500 "
+              >
+                Products
+              </button>
+            </Link>
 
             {/* <el-popover
               id="desktop-menu-product"
@@ -294,27 +296,29 @@ const Header = () => {
                 <div className="-my-6 divide-y divide-gray-500/10">
                   <div className="space-y-2 py-6">
                     <div className="-mx-3">
-                      <button
-                        type="button"
-                        command="--toggle"
-                        commandfor="products"
-                        className="flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-amber-500 hover:text-amber-700"
-                      >
-                        Product
-                        <svg
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          data-slot="icon"
-                          aria-hidden="true"
-                          className="size-5 flex-none in-aria-expanded:rotate-180"
+                      <Link href="/products">
+                        <button
+                          type="button"
+                          command="--toggle"
+                          commandfor="products"
+                          className="flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-amber-500 hover:text-amber-700"
                         >
-                          <path
-                            d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-                            clipRule="evenodd"
-                            fillRule="evenodd"
-                          />
-                        </svg>
-                      </button>
+                          Product
+                          <svg
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            data-slot="icon"
+                            aria-hidden="true"
+                            className="size-5 flex-none in-aria-expanded:rotate-180"
+                          >
+                            <path
+                              d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                              clipRule="evenodd"
+                              fillRule="evenodd"
+                            />
+                          </svg>
+                        </button>
+                      </Link>
                       {/* <el-disclosure
                         id="products"
                         hidden
