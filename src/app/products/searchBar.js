@@ -24,24 +24,34 @@ export default function SearchBar({
   }, [debouncedTerm, onSearch]);
 
   return (
-    <div className="relative w-full">
+    // <div className="relative w-full">
+    //   <input
+    //     type="text"
+    //     placeholder={placeholder}
+    //     className="text-amber-600 border-[3px] border-amber-600 rounded-lg px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-amber-600 w-full"
+    //     value={term}
+    //     onChange={(e) => setTerm(e.target.value)}
+    //   />
+
+    //   {term && (
+    //     <button
+    //       type="button"
+    //       onClick={() => setTerm("")}
+    //       className="absolute right-3 top-1/2 -translate-y-1/2 text-amber-600 hover:text-amber-800"
+    //     >
+    //       <UilTimes size={20} />
+    //     </button>
+    //   )}
+    // </div>
+
+    <div class="relative w-full">
       <input
-        type="text"
-        placeholder={placeholder}
-        className="text-amber-600 border-[3px] border-amber-600 rounded-lg px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-amber-600 w-full"
+        placeholder="Search..."
+        class="input shadow-lg border focus:border-2 border-gray-300 px-5 py-3 rounded-xl w-56 transition-all focus:w-64 outline-none text-white"
         value={term}
         onChange={(e) => setTerm(e.target.value)}
+        type="search"
       />
-
-      {term && (
-        <button
-          type="button"
-          onClick={() => setTerm("")}
-          className="absolute right-3 top-1/2 -translate-y-1/2 text-amber-600 hover:text-amber-800"
-        >
-          <UilTimes size={20} />
-        </button>
-      )}
     </div>
   );
 }

@@ -15,7 +15,8 @@ export default function RootLayout({ children }) {
       <body className="antialiased min-h-screen flex flex-col">
         <Header className="shrink-0" />
 
-        <main className="flex-grow flex flex-col">{children}</main>
+        {/* main 自动填满中间剩余高度 */}
+        <main className="flex-1 flex flex-col">{children}</main>
 
         <FooterSection className="shrink-0" />
       </body>

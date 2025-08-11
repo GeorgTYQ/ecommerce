@@ -1,16 +1,47 @@
+// app/xxx/Product.jsx  或你的原文件路径
 "use client";
-import React, { useState, Suspense } from "react";
-import CategoryFeed from "@/app/categories/categoryFeed";
-import SearchBar from "./searchBar";
-import ProductFeed from "./productFeed";
+
+import React, { Suspense, useState } from "react";
+import dynamic from "next/dynamic";
 import { useActiveCategory } from "@/app/store/useActiveCategory";
 
-const Product = () => {
+// 懒加载子组件，并开启 suspense
+const CategoryFeed = dynamic(() => import("@/app/categories/categoryFeed"), {
+  suspense: true,
+});
+const SearchBar = dynamic(() => import("./searchBar"), {
+  suspense: true,
+});
+const ProductFeed = dynamic(() => import("./productFeed"), {
+  suspense: true,
+});
+
+// 统一的骨架 UI（你可以按需美化）
+function ProductSkeleton() {
+  return (
+    <div className="space-y-4">
+      {/* 顶部两块：分类 + 搜索 */}
+      <div className="flex flex-col gap-4 md:flex-row md:items-center">
+        <div className="md:basis-2/3 h-10 rounded bg-amber-100 animate-pulse" />
+        <div className="md:basis-1/3 h-10 rounded bg-amber-100 animate-pulse" />
+      </div>
+      {/* 产品列表区域 */}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div key={i} className="h-40 rounded bg-amber-100 animate-pulse" />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// 实际内容（不再套内部 Suspense）
+function ProductContent() {
   const [keyword, setKeyword] = useState("");
   const activeCategoryId = useActiveCategory((s) => s.activeCategoryId);
 
   return (
-    <div>
+    <div className="min-h-[calc(100vh-theme(space.16))] bg-cover bg-center bg-no-repeat bg-[url('/producBackground.jpg')]">
       <div className="flex flex-col gap-4 md:flex-row md:items-center">
         {/* CategoryFeed - 左侧 2/3 */}
         <div className="md:basis-2/3">
@@ -23,20 +54,20 @@ const Product = () => {
         </div>
       </div>
 
-      <Suspense
-        fallback={
-          <div style={{ textAlign: "center" }}>Loading products...</div>
-        }
-      >
-        <ProductFeed
-          q={keyword || undefined}
-          categoryId={activeCategoryId}
-          take={12}
-          order="desc"
-        />
-      </Suspense>
+      <ProductFeed
+        q={keyword || undefined}
+        categoryId={activeCategoryId}
+        take={12}
+        order="desc"
+      />
     </div>
   );
-};
+}
 
-export default Product;
+export default function Product() {
+  return (
+    <Suspense fallback={<ProductSkeleton />}>
+      <ProductContent />
+    </Suspense>
+  );
+}

@@ -23,7 +23,7 @@ export default function ProductFeed({
         </div>
       )}
       {!loading && !items.length && (
-        <div className="text-white">No Product</div>
+        <div className="text-white m-10">No Product</div>
       )}
 
       {!!items.length && (

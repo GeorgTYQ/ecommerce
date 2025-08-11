@@ -1,16 +1,19 @@
-import ProductCarouselWrapper from "@/app/products/productWrapper";
-import getCategory from "@/app/lib/getCategory";
-
+import ProductFeed from "@/app/products/productFeed";
+import Link from "next/link";
 // 导出一个名为ProductSection的函数组件，接收一个名为products的参数
 export const ProductSection = ({ products }) => {
-  // 返回一个section元素，包含一个h2元素和一个CategoryGridWrapper组件和一个ProductCarouselWrapper组件
   return (
     <section className="py-1  text-center bg-cover bg-center bg-no-repeat bg-[url('/producBackground.jpg')]">
       <h2 className="text-3xl font-bold mb-8  text-amber-600 underline-after">
         Our Products
       </h2>
-
-      <ProductCarouselWrapper />
+      <ProductFeed take={6} />
+      <Link href="/products">
+        {" "}
+        <div className="rounded text-white bg-amber-600 py-2 px-4 mt-4 cursor-pointer hover:bg-amber-700 w-[60%] mx-auto flex items-center justify-center text-center mb-5">
+          View More Products
+        </div>
+      </Link>
     </section>
   );
 };
