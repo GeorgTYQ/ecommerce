@@ -56,7 +56,7 @@ const FooterSection = () => {
 
         {submitted && (
           <p className="mb-4 text-green-400 font-medium">
-            Thank you for your message! We'll get back to you soon.
+            Thank you for your message! We&apos;ll get back to you soon.
           </p>
         )}
 

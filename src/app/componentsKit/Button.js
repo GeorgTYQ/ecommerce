@@ -1,5 +1,4 @@
 import React from "react";
-
 const LoadingButton = React.forwardRef(
   ({ loading, children, disabled, className = "", ...props }, ref) => {
     return (
@@ -37,5 +36,8 @@ const LoadingButton = React.forwardRef(
     );
   }
 );
+
+// 加上这行
+LoadingButton.displayName = "LoadingButton";
 
 export default LoadingButton;

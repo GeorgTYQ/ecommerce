@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 export const AboutHero = () => {
   return (
     <section className="relative bg-gradient-to-b from-amber-100 to-amber-50 ">
@@ -30,7 +31,9 @@ export const AboutHero = () => {
 
         <div className="w-full lg:w-1/2 flex justify-center">
           <div className="w-[320px] sm:w-[420px] lg:w-[520px] rounded-2xl overflow-hidden shadow-lg">
-            <img
+            <Image
+              width={520}
+              height={420}
               src="/shop.jpg"
               alt="Lavosh Bakery storefront"
               className="w-full h-full object-cover"
