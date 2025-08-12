@@ -59,7 +59,19 @@ const Header = () => {
         </div>
 
         {/* small screen icon */}
-        <div className="flex lg:hidden">
+        <div className="flex lg:hidden gap-5">
+          <span className="relative inline-flex items-center text-lg font-bold text-amber-500 gap-1 cursor-pointer">
+            <button onClick={() => setOpen(true)}>
+              <UilShoppingCartAlt />
+              {isClient && cartCount > 0 && (
+                <span className="absolute -bottom-1 -right-1 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full cursor-pointer">
+                  {cartCount}
+                </span>
+              )}
+            </button>
+
+            <CartDrawer open={open} onClose={() => setOpen(false)} />
+          </span>
           <button
             type="button"
             command="show-modal"
@@ -101,18 +113,12 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link
-            href="#"
-            className="inline-flex items-center text-lg font-bold text-amber-500 gap-1"
-          >
-            <UilSignInAlt />
-          </Link>
-          <span className="relative inline-flex items-center text-lg font-bold text-amber-500 gap-1">
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-5">
+          <span className="relative inline-flex items-center text-lg font-bold text-amber-500 gap-1 cursor-pointer">
             <button onClick={() => setOpen(true)}>
               <UilShoppingCartAlt />
               {isClient && cartCount > 0 && (
-                <span className="absolute -bottom-1 -right-1 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
+                <span className="absolute -bottom-1 -right-1 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full cursor-pointer">
                   {cartCount}
                 </span>
               )}
@@ -120,6 +126,12 @@ const Header = () => {
 
             <CartDrawer open={open} onClose={() => setOpen(false)} />
           </span>
+          <Link
+            href="#"
+            className="inline-flex items-center text-lg font-bold text-amber-500 gap-1 cursor-pointer"
+          >
+            <UilSignInAlt />
+          </Link>
         </div>
       </nav>
       {/* small screen */}
@@ -128,7 +140,7 @@ const Header = () => {
           <div tabIndex="0" className="fixed inset-0 focus:outline-none">
             <el-dialog-panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-stone-900/80 p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
               <div className="flex items-center justify-between">
-                <Link href="#" className="-m-1.5 p-1.5">
+                <Link href="#" className="-m-1.5 p-1.5 cursor-pointer">
                   <span className="sr-only">Lavosh Bakery</span>
                   <Image
                     src="/favicon.svg"
@@ -142,7 +154,7 @@ const Header = () => {
                   type="button"
                   command="close"
                   commandfor="mobile-menu"
-                  className="-m-2.5 rounded-md p-2.5 text-amber-500 hover:text-amber-700"
+                  className="-m-2.5 rounded-md p-2.5 text-amber-500 hover:text-amber-700 cursor-pointer"
                 >
                   <UilTimes size={32} />
                 </button>
@@ -151,7 +163,7 @@ const Header = () => {
                 <div className="-my-6 divide-y divide-gray-500/10">
                   <div className="space-y-2 py-6">
                     <div className="-mx-3">
-                      <Link href="/">
+                      <Link href="/" className="cursor-pointer">
                         <button
                           onClick={() => setSelectedMenu("home")}
                           className={getLinkClass("home")}

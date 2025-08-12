@@ -5,7 +5,6 @@ import { useProducts } from "@/app/hooks/useProducts";
 import ProductsWrapper from "./productWrapper";
 import ProductsGrid from "./productGrid";
 import ProductItem from "./productItem";
-import SearchBar from "@/app/products/searchBar";
 export default function ProductFeed({
   categoryId,
   q,

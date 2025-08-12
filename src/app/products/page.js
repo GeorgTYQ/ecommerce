@@ -19,19 +19,7 @@ const ProductFeed = dynamic(() => import("./productFeed"), {
 // 统一的骨架 UI（你可以按需美化）
 function ProductSkeleton() {
   return (
-    <div className="space-y-4">
-      {/* 顶部两块：分类 + 搜索 */}
-      <div className="flex flex-col gap-4 md:flex-row md:items-center">
-        <div className="md:basis-2/3 h-10 rounded bg-amber-100 animate-pulse" />
-        <div className="md:basis-1/3 h-10 rounded bg-amber-100 animate-pulse" />
-      </div>
-      {/* 产品列表区域 */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {Array.from({ length: 8 }).map((_, i) => (
-          <div key={i} className="h-40 rounded bg-amber-100 animate-pulse" />
-        ))}
-      </div>
-    </div>
+    <div className="min-h-[calc(100vh-theme(space.16))] bg-cover bg-center bg-no-repeat bg-[url('/producBackground.jpg')]"></div>
   );
 }
 

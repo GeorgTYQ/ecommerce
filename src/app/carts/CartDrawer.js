@@ -4,6 +4,7 @@ import { useCart, useMenuStore } from "@/app/store/store";
 import { UilTimes } from "@iconscout/react-unicons";
 import LoadingButton from "@/app/componentsKit/Button";
 import Link from "next/link";
+import { UilTrashAlt } from "@iconscout/react-unicons";
 export default function CartDrawer({ open, onClose }) {
   const { cart, removeFromCart } = useCart();
 
@@ -78,9 +79,9 @@ export default function CartDrawer({ open, onClose }) {
                       <p className="text-amber-600">{item.color || ""}</p>
                       <button
                         onClick={() => removeFromCart(item.id)}
-                        className="font-base text-gray-600 hover:text-gray-800"
+                        className="inline-flex items-center text-sm font-medium text-red-600 hover:text-red-800 dark:text-red-500"
                       >
-                        Remove
+                        <UilTrashAlt className="m-2" /> Remove
                       </button>
                     </div>
                   </div>

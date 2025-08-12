@@ -1,6 +1,7 @@
 import React from "react";
 import LoadingButton from "../componentsKit/Button";
 import { UilArrowRight } from "@iconscout/react-unicons";
+import Link from "next/link";
 export default function OrderSummary({ cartTotal }) {
   return (
     <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
@@ -28,10 +29,12 @@ export default function OrderSummary({ cartTotal }) {
             {" "}
             or{" "}
           </span>
-          <button className="inline-flex items-center gap-2 text-sm font-medium text-amber-700 dark:text-amber-500">
-            Continue Shopping
-            <UilArrowRight />
-          </button>
+          <Link href="/products">
+            <button className="inline-flex items-center gap-2 text-sm font-medium text-amber-700 dark:text-amber-500">
+              Continue Shopping
+              <UilArrowRight />
+            </button>
+          </Link>
         </div>
       </div>
     </div>

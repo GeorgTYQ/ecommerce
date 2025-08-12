@@ -6,7 +6,13 @@ import CartWrapper from "./CartWrapper";
 import OrderSummary from "./OrderSummary";
 export default function CartPage() {
   const { cart, removeFromCart } = useCart();
-  const [voucherCode, setVoucherCode] = useState("");
+  const decreaseQuantity = useCart((state) => state.decreaseQuantity);
+  const increaseQuantity = useCart((state) => state.increaseQuantity);
+  console.log(
+    "decreaseQuantity type:",
+    typeof decreaseQuantity,
+    decreaseQuantity
+  );
 
   function originalPrice() {
     return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -26,7 +32,12 @@ export default function CartPage() {
                 Your cart is empty.
               </p>
             ) : (
-              <CartGrid cart={cart} removeFromCart={removeFromCart} />
+              <CartGrid
+                cart={cart}
+                removeFromCart={removeFromCart}
+                decreaseQuantity={decreaseQuantity}
+                increaseQuantity={increaseQuantity}
+              />
             )}
           </div>
           <div className="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
