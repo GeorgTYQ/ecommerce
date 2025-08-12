@@ -1,11 +1,31 @@
 "use client";
-import React from "react";
-import { UilTimes, UilBars, UilSignInAlt } from "@iconscout/react-unicons";
+import React, { useEffect, useState } from "react";
+import {
+  UilTimes,
+  UilBars,
+  UilSignInAlt,
+  UilUnlock,
+} from "@iconscout/react-unicons";
 import Link from "next/link";
 import Image from "next/image";
-import { useMenuStore } from "@/app/store/store";
+import { useMenuStore, useCart } from "@/app/store/store";
+import { UilShoppingCartAlt } from "@iconscout/react-unicons";
+import CartDrawer from "../carts/CartDrawer";
 const Header = () => {
   const { selectedMenu, setSelectedMenu } = useMenuStore();
+  const cart = useCart((state) => state.cart); // 直接订阅 Zustand 的 cart
+  const cartCount = useCart((state) => state.getCartCount());
+  useEffect(() => {
+    console.log("购物车更新：", cartCount);
+    // 这里可以放刷新 UI、存 localStorage、统计数量等逻辑
+  }, [cart]);
+
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+  const [open, setOpen] = useState(false);
 
   const getLinkClass = (menu) =>
     `relative pb-1 font-semibold text-amber-600 cursor-pointer
@@ -88,6 +108,18 @@ const Header = () => {
           >
             <UilSignInAlt />
           </Link>
+          <span className="relative inline-flex items-center text-lg font-bold text-amber-500 gap-1">
+            <button onClick={() => setOpen(true)}>
+              <UilShoppingCartAlt />
+              {isClient && cartCount > 0 && (
+                <span className="absolute -bottom-1 -right-1 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
+                  {cartCount}
+                </span>
+              )}
+            </button>
+
+            <CartDrawer open={open} onClose={() => setOpen(false)} />
+          </span>
         </div>
       </nav>
       {/* small screen */}
